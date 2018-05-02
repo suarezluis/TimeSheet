@@ -1,6 +1,4 @@
 // Initialize Firebase
-// Initialize Firebase
-
 var config = {
   apiKey: "AIzaSyC9bG0SRFi_EP6OdpbLLmNhmkzkdGjETCc",
   authDomain: "test-1a97c.firebaseapp.com",
@@ -19,12 +17,9 @@ var empRate;
 var newEmp;
 var monthWorked;
 var totalBilled;
-
 // listener for submit
-
 $("#add-employee-btn").on("click", function(event) {
   event.preventDefault();
-
   // Grabs user input
   empName = $("#employee-name-input")
     .val()
@@ -38,43 +33,33 @@ $("#add-employee-btn").on("click", function(event) {
   empRate = $("#rate-input")
     .val()
     .trim();
-
   newEmp = {
     name: empName,
     role: empRole,
     start: empStart,
     rate: empRate
   };
-
   // Uploads employee data to the database
   database.ref().push(newEmp);
-
   // Clears all of the text-boxes
   $("#employee-name-input").val("");
   $("#role-input").val("");
   $("#start-input").val("");
   $("#rate-input").val("");
 });
-
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-  
-
+  console.log(childSnapshot.val());
   // Store everything into a variable.
   empName = childSnapshot.val().name;
   empRole = childSnapshot.val().role;
   empStart = childSnapshot.val().start;
   empRate = childSnapshot.val().rate;
-
   // Employee Info
   addRow();
-
   // Calculate the months worked using hardcore math
-
   // To calculate the months worked
-
   // Calculate the total billed rate
 });
-
 function addRow() {
   $("#table").append(
     "<tr><td>" +
@@ -93,11 +78,14 @@ function addRow() {
   );
 }
 
+
+
 // function to calculate months difference between input date and present date
 // using dependencies sucks!
-// #codelikearealprogrammer.
-// #feelingshurt
-
+// #codeYourOwn
+// #codeLikeArealProgrammer.
+// #feelingsHurt
+// string = "d/m/y"
 function monthDiff(string) {
   var list = string.split("/");
   var d = list[0];
@@ -105,14 +93,16 @@ function monthDiff(string) {
   var twenty = "20";
   var ninetheen = "19";
   var y = list[2];
+  var date2 = new Date();
   if (parseInt(twenty + y) > parseInt(date2.getFullYear())) {
     y = ninetheen + y;
   } else {
     y = twenty + y;
   }
   var date1 = new Date(m + "/" + d + "/" + y);
-  var date2 = new Date();
   var timeDiff = date2 - date1;
   var monthDiff = Math.floor(timeDiff / 1000 / 60 / 60 / 24 / 30);
   return monthDiff;
 }
+
+
