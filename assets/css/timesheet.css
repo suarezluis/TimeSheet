@@ -1,14 +1,18 @@
 body {
   background-color: #70d9eb;
+  color: #333333;
+  font-family: "Lato", sans-serif;
 }
 
 .jumbotron {
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   background: url("../images/timesheet.png") no-repeat;
   background-size: contain;
   background-color: #ad88f8;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  font-family: "Signika", sans-serif;
 }
 
 #jumbotronText {
@@ -18,12 +22,20 @@ body {
 .card {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  background-color: aliceblue;
+  text-align: center;
+  padding-top: 10px;
 }
 
-#currentEmployees {
-  margin-bottom: 10px;
+.card:hover {
+  box-shadow: 4px 6px 6px 4px rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.form-control {
+  background-color: #f3f8fc;
 }
 
 #addEmployee {
-  margin: 0 auto;
+  margin: 15px auto;
 }
