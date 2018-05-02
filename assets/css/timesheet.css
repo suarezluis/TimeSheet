@@ -1,4 +1,9 @@
+body {
+  background-color: #70d9eb;
+}
+
 .jumbotron {
+  margin-top: 10px;
   background: url("../images/timesheet.png") no-repeat;
   background-size: contain;
   background-color: #ad88f8;
