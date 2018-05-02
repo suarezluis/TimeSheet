@@ -24,7 +24,7 @@ body {
     0 3px 1px -2px rgba(0, 0, 0, 0.2);
   background-color: aliceblue;
   text-align: center;
-  padding-top: 10px;
+  padding: 25px 20px;
 }
 
 .table-hover #table tr:hover {
