@@ -27,6 +27,10 @@ body {
   padding-top: 10px;
 }
 
+.table-hover #table tr:hover {
+  background-color: #c6f7ff;
+}
+
 .card:hover {
   box-shadow: 4px 6px 6px 4px rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -38,4 +42,27 @@ body {
 
 #addEmployee {
   margin: 15px auto;
+}
+
+#add-employee-btn {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background-color: #ad88f8;
+  border: 1px #ad88f8 solid;
+}
+
+#add-employee-btn:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  box-shadow: 6px 11px 3px #c7c7c7;
+  background-color: #a8de4d;
+  border: 1px #a8de4d solid;
+}
+
+#add-employee-btn:active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  box-shadow: none;
 }
