@@ -57,7 +57,7 @@ $("#add-employee-btn").on("click", function(event) {
 });
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-  console.log(childSnapshot.val());
+  
 
   // Store everything into a variable.
   empName = childSnapshot.val().name;
@@ -93,6 +93,11 @@ function addRow() {
   );
 }
 
+// function to calculate months difference between input date and present date
+// using dependencies sucks!
+// #codelikearealprogrammer.
+// #feelingshurt
+
 function monthDiff(string) {
   var list = string.split("/");
   var d = list[0];
@@ -100,16 +105,13 @@ function monthDiff(string) {
   var twenty = "20";
   var ninetheen = "19";
   var y = list[2];
-
-  console.log(date1);
-  var date2 = new Date();
-  console.log(date2);
   if (parseInt(twenty + y) > parseInt(date2.getFullYear())) {
     y = ninetheen + y;
   } else {
     y = twenty + y;
   }
   var date1 = new Date(m + "/" + d + "/" + y);
+  var date2 = new Date();
   var timeDiff = date2 - date1;
   var monthDiff = Math.floor(timeDiff / 1000 / 60 / 60 / 24 / 30);
   return monthDiff;
