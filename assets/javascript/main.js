@@ -17,25 +17,20 @@ var empRole;
 var empStart;
 var empRate;
 var newEmp;
+var monthWorked;
+var totalBilled;
 
 // listener for submit
 
 $("#add-employee-btn").on("click", function(event) {
   event.preventDefault();
-alert("click")
+  alert("click");
   // Grabs user input
-  empName = $("#employee-name-input")
-    .val()
-    .trim();
+  empName = $("#employee-name-input").val().trim();
   empRole = $("#role-input")
     .val()
     .trim();
-  empStart = moment(
-    $("#start-input")
-      .val()
-      .trim(),
-    "DD/MM/YY"
-  ).format("X");
+  empStart = $("#start-input").val().trim();
   empRate = $("#rate-input")
     .val()
     .trim();
@@ -55,6 +50,9 @@ alert("click")
   $("#role-input").val("");
   $("#start-input").val("");
   $("#rate-input").val("");
+
+  addRow()
+  
 });
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -72,32 +70,34 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(empStart);
   console.log(empRate);
 
-  // Prettify the employee start
-  var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
+  
 
   // Calculate the months worked using hardcore math
   // To calculate the months worked
-  var empMonths = moment().diff(moment(empStart, "X"), "months");
-  console.log(empMonths);
+  
 
   // Calculate the total billed rate
-  var empBilled = empMonths * empRate;
-  console.log(empBilled);
+ 
 
-  // Add each train's data into the table
-  $("#employee-table > tbody").append(
+  
+  ;
+});
+
+
+function addRow(){
+  $("#table").append(
     "<tr><td>" +
       empName +
       "</td><td>" +
       empRole +
       "</td><td>" +
-      empStartPretty +
+      empStart +
       "</td><td>" +
-      empMonths +
+      monthWorked +
       "</td><td>" +
       empRate +
       "</td><td>" +
-      empBilled +
-      "</td></tr>"
-  );
-});
+      totalBilled +
+      "</td><td>"
+  )
+}
