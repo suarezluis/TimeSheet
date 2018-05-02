@@ -24,7 +24,7 @@ var totalBilled;
 
 $("#add-employee-btn").on("click", function(event) {
   event.preventDefault();
-  alert("click");
+  
   // Grabs user input
   empName = $("#employee-name-input").val().trim();
   empRole = $("#role-input")
@@ -65,10 +65,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   empRate = childSnapshot.val().rate;
 
   // Employee Info
-  console.log(empName);
-  console.log(empRole);
-  console.log(empStart);
-  console.log(empRate);
+  addRow()  
 
   
 
