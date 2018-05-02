@@ -51,7 +51,7 @@ $("#add-employee-btn").on("click", function(event) {
   $("#start-input").val("");
   $("#rate-input").val("");
 
-  addRow()
+  
   
 });
 
@@ -70,6 +70,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   
 
   // Calculate the months worked using hardcore math
+  
   // To calculate the months worked
   
 
@@ -90,11 +91,27 @@ function addRow(){
       "</td><td>" +
       empStart +
       "</td><td>" +
-      monthWorked +
+      monthDiff(empStart) +
       "</td><td>" +
       empRate +
       "</td><td>" +
-      totalBilled +
+      empRate * monthDiff(empStart) +
       "</td><td>"
   )
+}
+
+
+function monthDiff(string){
+  var list = string.split("/")
+  var d = list[0]
+  var m = list[1]
+  var y = list[2]
+  var date1 = new Date(m+"/"+d+"/20"+y);
+  console.log(date1)
+  var date2 = new Date()
+  console.log(date2)
+  var timeDiff = date2 - date1
+  var monthDiff = Math.floor(timeDiff/1000/60/60/24/30) 
+  return monthDiff
+
 }
