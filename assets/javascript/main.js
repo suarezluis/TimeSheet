@@ -24,13 +24,17 @@ var totalBilled;
 
 $("#add-employee-btn").on("click", function(event) {
   event.preventDefault();
-  
+
   // Grabs user input
-  empName = $("#employee-name-input").val().trim();
+  empName = $("#employee-name-input")
+    .val()
+    .trim();
   empRole = $("#role-input")
     .val()
     .trim();
-  empStart = $("#start-input").val().trim();
+  empStart = $("#start-input")
+    .val()
+    .trim();
   empRate = $("#rate-input")
     .val()
     .trim();
@@ -50,9 +54,6 @@ $("#add-employee-btn").on("click", function(event) {
   $("#role-input").val("");
   $("#start-input").val("");
   $("#rate-input").val("");
-
-  
-  
 });
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -65,24 +66,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   empRate = childSnapshot.val().rate;
 
   // Employee Info
-  addRow()  
-
-  
+  addRow();
 
   // Calculate the months worked using hardcore math
-  
+
   // To calculate the months worked
-  
 
   // Calculate the total billed rate
- 
-
-  
-  ;
 });
 
-
-function addRow(){
+function addRow() {
   $("#table").append(
     "<tr><td>" +
       empName +
@@ -97,21 +90,27 @@ function addRow(){
       "</td><td>" +
       empRate * monthDiff(empStart) +
       "</td><td>"
-  )
+  );
 }
 
+function monthDiff(string) {
+  var list = string.split("/");
+  var d = list[0];
+  var m = list[1];
+  var twenty = "20";
+  var ninetheen = "19";
+  var y = list[2];
 
-function monthDiff(string){
-  var list = string.split("/")
-  var d = list[0]
-  var m = list[1]
-  var y = list[2]
-  var date1 = new Date(m+"/"+d+"/20"+y);
-  console.log(date1)
-  var date2 = new Date()
-  console.log(date2)
-  var timeDiff = date2 - date1
-  var monthDiff = Math.floor(timeDiff/1000/60/60/24/30) 
-  return monthDiff
-
+  console.log(date1);
+  var date2 = new Date();
+  console.log(date2);
+  if (parseInt(twenty + y) > parseInt(date2.getFullYear())) {
+    y = ninetheen + y;
+  } else {
+    y = twenty + y;
+  }
+  var date1 = new Date(m + "/" + d + "/" + y);
+  var timeDiff = date2 - date1;
+  var monthDiff = Math.floor(timeDiff / 1000 / 60 / 60 / 24 / 30);
+  return monthDiff;
 }
